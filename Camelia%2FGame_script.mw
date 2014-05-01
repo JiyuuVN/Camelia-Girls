@@ -1,0 +1,1775 @@
+<pre class="brush:python">
+# en
+# Act 1 starts here.
+init:
+    # Declare language-specific characters used by this game.
+    if persistent.lang == "english":
+        $ classroom = "Class"
+        $ teacher = "Teacher"
+        $ unknown = "Unknown"
+label act1_en:
+    scene black
+    play music music_netbook1
+    $ renpy.pause(1.0)
+    scene bg sunrise
+    with introfade
+    nvl clear
+    nvl show dissolve
+    play countermusic sound_typing
+    net "<Дорогая Силлия...>"
+    net "<Наконец-то я приехала в школу Камелии...>"
+    net "<С сегодняшнего дня я буду жить в общежитии, как и хотели мои родители...>"
+    nvl hide dissolve
+    stop countermusic
+    scene bg academy
+    with fade
+    k_happy "Ах! Знала бы ты, какой  здесь чудесный утренний воздух..."
+    k_relieved "И как прекрасен восход..."
+    k_genki "Просто не терпится узнать, что же интересного со мной приключится..."
+    stop music
+    $ renpy.play(sound_collide)
+    with vpunch
+    nar "кто-то в меня врезался..."
+    nar "...и я упала"
+    show miharu grief at Fling(-0.5, 0.35, 1.5, 1.5, 1.0, 730.0)
+    u "Хья-я-я!!!"
+    nar "это какая-то девочка..."
+    play music music_miharu1
+    menu:
+        "Я в порядке. Но, может, она поранилась?":
+            jump okay_en
+        "Тупая растяпа, смотри куда идёшь!":
+            jump eyes_en
+        "Хе-хе, она выглядит растерянной. Надо подшутить над ней.":
+            jump bone_en
+label okay_en:
+    k_worried "Ай... Ох! С тобой всё нормально?"
+    show miharu whimper at Rise(0.5, 1.0)
+    u "Извини. Да, со мной всё нормально. А с тобой?"
+    k_relieved "Ага, со мной тоже."
+    show miharu relieved
+    u "Рада слышать."
+    show miharu uncomfortable at Bounce(1)
+    u "Ой! Чёрт! Я опаздываю!"
+    show miharu smile
+    u "Извини, мне надо бежать, поэтому..."
+    show miharu genki at ExitLeft(0.75)
+    u "УВИДИМСЯ!"
+    k_nervous "Что?"
+    jump who_en
+label eyes_en:
+    k_furious "Эй! Ты ослепла что ли?!"
+    show miharu grief at Rise(0.5, 0.25)
+    u "Хьяа-а-а!!! Извини!!!"
+    show miharu uncomfortable at Bounce(1)
+    u "Ах! Чёрт! Я опаздываю!"
+    show miharu nervous
+    u "Извини, но мне надо бежать... Поэтому..."
+    show miharu grief at ExitLeft(0.5)
+    u "Увииидимсяяя!!!"
+    k_shout "Эй! Вернись!!!"
+    k_stare "..."
+    k_unamused "Ох... она уже убежала..."
+    jump who_en
+label bone_en:
+    k_sneaky "ОЙЙЙ! МОЯ НОГА!!! ОНА СЛОМАНА!!! ОХ, Я УМИРАЮ... КАК БОЛЬНО!!!"
+    show miharu grief at Rise(0.5, 0.5)
+    u "Йа-а-а-а-а!!!  Что я наделала?!!"
+    show miharu dread at Bounce(2)
+    u "Надо вызвать скорую~! Надо вызвать скорую~! "
+    k_genki "Эй... я просто шучу..."
+    show miharu grief at Bounce(1)
+    u "ОХ! Я ЖЕ ОПАЗДЫВАЮ!"
+    show miharu confused at Bounce(2)
+    u "Что же делать~? Что делать~?"
+    k_weird "ЭЙ... ты меня вообще слышала?"
+    show miharu whimper
+    u "Да...*хнык*"
+    k_smug "Извини... я просто пошутила..."
+    show miharu grief at Bounce(4)
+    u "НЕПРАВДА! ИЗ-ЗА МЕНЯ ТЫ СЛОМАЛА НОГУ!!!"
+    k_ehhh "А?!"
+    show miharu cautious at Bow(1)
+    u "Обещаю, я возьму на себя всю ответственность! Но только после того, как вернусь с учёбы..."
+    k_weird "Ррр... Хорошо..."
+    show miharu uncomfortable
+    u "Пожалуйста, найди кого-нибудь, кто сможет отвести тебя в больницу!.."
+    show miharu whimper at ExitLeft(0.75)
+    u "Увидимся!"
+    k_gasp "Ох~!"
+    k_unamused "..."
+    k_sarcastic "Это что, типа, тактика «Хит-энд-Ран»?"
+    jump who_en
+label who_en:
+    k_sigh "..."
+    show miharu smile at RunInDistance(-0.5, 1.5, 0.6, 0.75)
+    nar "она убежала"
+    nar "кто это вообще такая?"
+    stop music fadeout 3.5 
+    $ mouse_visible = False
+    hide bg academy
+    with videofade_in
+    scene white
+    show miniOP_1
+    show miniOP_2 behind miniOP_1
+    show miniOP_3 behind miniOP_2
+    $ renpy.pause(7.5)
+    play music music_konobangumiwa1
+    show konobangumiwa_1
+    show konobangumiwa_2
+    $ renpy.pause(10.25)
+    $ mouse_visible = True
+    scene black
+    stop music
+    $ renpy.pause(0.25)
+    play sound sound_schoolchime
+    show schoolchime
+    show acttitle
+    $ renpy.pause(7.5)
+    scene bg classroom
+    with dissolve
+    play music music_aizawa1
+    show aizawa glad at EnterLeft(0.0, 1.0)
+    t "Итак, класс!"
+    t "Как я уже говорила, сегодня к нам присоединится новый ученик."
+    show aizawa grateful
+    t "Ну что ж, можешь войти. Представься, пожалуйста!"
+    show aizawa smile at ExitLeft(1.0)
+    nar "я вошла... взгляды всего класса были прикованы ко мне, но я старалась не нервничать"
+    k_happy "Привет... Меня зовут Кана."
+    k_genki "Приятно познакомиться..."
+    show crowd nervous behind aizawa at Rise(0.50, 0.50)
+    c "{=whispered}Приятно познакомиться...{/=whispered}"
+    show crowd nervous at Sit(0.75)
+    nar "они произнесли это таким скучающим тоном..."
+    show aizawa sigh at EnterLeft(0.0, 0.5)
+    t "*Вздох*"
+    show aizawa resign
+    t "Какое неоригинальное приветствие..."
+    show aizawa fatigue
+    stop music 
+    k_nervous "А?!"
+    nar "я слышу, как ученики перешёптываются: «Ох... опять она за старое...»"
+    show aizawa chastisecenter
+    t "Где СТРАСТЬ, Хана?! Слишком мало СТРАСТИ!.."
+    show aizawa sadistic
+    t "ДАВАЙ СНОВА!!!"
+    show aizawa revenge
+    play music music_aizawa2
+    k_omg "Эээ?!!"
+    k_nervous "...."
+    k_genki "Это типа подшучивание над новенькими такое?.."
+    show aizawa reprimand at Bounce(2)
+    t "Конечно же нет!"
+    show aizawa maniac
+    t "А ТЕПЕРЬ ДАВАЙ, ПРЕДСТАВЬСЯ НОРМАЛЬНО!!!"
+    show aizawa astound at ExitLeft(0.25)
+    k_swirl "КЬЯЯЯЯ~!!! ХОРОШО! ХОРОШО!"
+    k_nervous "Кхм..."
+    menu:
+        "Надо просто подыграть, так будет безопаснее...":
+            jump hana_en
+        "Она хочет страсти? ОНА ПОЛУЧИТ ЕЁ!!!":
+            jump sama_en
+        "Ох! Просто скажу, что в голову взбредёт...":
+            jump legend_en
+label hana_en:
+    k_genki "Меня зовут Кана, а не Хана."
+    stop music 
+    play sound sound_deadsilence
+    c "{=whispered}*тишина*{/=whispered}"
+    nar "я вроде нормально представилась..."
+    show aizawa chortlecenter at EnterLeft(0.0, 0.75)
+    t "Хорошо, ты прошла..."
+    show aizawa schemecenter
+    k_panic "И ЭТО ВСЁ?!!"
+    jump intro_en
+label sama_en:
+    stop music
+    k_creepy "{=whispered}хухуху...{/=whispered}"
+    play music music_pompous1
+    k_evil "Я — ВЕЛИКАЯ И МОГУЩЕСТВЕННАЯ КАНА-САМА!!!"
+    k_villainous "ПАДИТЕ НИЦ, СМЕРТНЫЕ~ !!!"
+    stop music
+    play sound sound_deadsilence
+    c "{=whispered}*тишина*{/=whispered}"
+    nar "«Ох, бедняжка...» Я снова слышу шёпот одноклассников"
+    nar "как неудобно..."
+    play music music_aizawa2
+    show aizawa obsessed at EnterLeft(0.0, 0.25)
+    t "БРАВО!!!"
+    show aizawa love
+    t "КАКОЕ ВЕЛИКОЛЕПНОЕ ПРЕДСТАВЛЕНИЕ!!! Я ТАК РАДА, ЧТО ГОТОВА РАСПЛАКАТЬСЯ!!!"
+    show aizawa tearsofpride
+    k_ehhh "ЧТО?!!"
+    show aizawa squeal
+    t "Ты мне уже нравишься, сестра!"
+    show aizawa savor
+    k_waterfall "Что происходит?!"
+    k_angry "И я не ваша сестра!"
+    show aizawa sweetdream
+    nar "но она уже перестала обращать на меня внимание"
+    jump intro_en
+label legend_en:
+    k_squeal "Я - легенда!"
+    stop music
+    play sound sound_embarrass
+    c "*гул*"
+    nar "«Ох и зачем я сморозила такую глупость?»"
+    show aizawa orly at EnterLeft(0.0, 1.0)
+    t "О... Так тебе нравятся фильмы с этим актёром."
+    show aizawa snicker
+    k_panic "Это... не совсем так!.."
+    show aizawa chortlecenter
+    t "Авава, не надо смущаться из-за этого... Он всем девочкам нравится."
+    show aizawa schemecenter
+    show crowd angry behind aizawa at Rise(0.5, 0.25)
+    c "ПЕРЕСТАНЬТЕ НЕСТИ ВСЯКУЮ ЧУШЬ!!!"
+    show crowd angry at Sit(0.25)
+    jump intro_en
+label intro_en:
+    show aizawa cute
+    t "Отлично... Пришло время и мне представиться..."
+    show aizawa smile
+    stop music fadeout 1
+    play sound sound_spotlight
+    show ambient darken behind aizawa
+    show prop spotlight at Appear(0.0, 0.0, 0.0, 0.0)
+    nar "прожектор?!"
+    play music sound_drumroll
+    show aizawa awesome
+    t "ВЕЛИКАЯ~!"
+    show aizawa evilchuckle
+    t "ИЗУМИТЕЛЬНАЯ~!"
+    show aizawa love
+    t "НЕСРАВНЕННАЯ~!"
+    show aizawa impressed
+    t "ВЫЗЫВАЮЩАЯ ТРЕПЕТ~!"
+    show aizawa happy
+    t "ПРЕКРАСНАЯ~!"
+    show aizawa pleasantdream
+    t "{=whispered}и самое главное...{/=whispered}"
+    show aizawa grateful
+    t "ЛЕГЕНДАРНАЯ~!"
+    stop music
+    play sound sound_drumtada
+    show aizawa squeal at Bounce(1)
+    t "АЙЗАВА-СЕНСЕЙ!!!"
+    play music music_pompous2
+    show aizawa smile at MoveTo(0.5, 1.0)
+    hide ambient darken
+    with dissolve
+    hide prop spotlight
+    with dissolve
+    with Pause(1)
+    show snowblossom
+    with dissolve
+    nar "она подошла и приняла драматическую позу"
+    show aizawa genki
+    ta "Приятно познакомиться!"
+    show aizawa smile
+    stop music fadeout 2
+    hide snowblossom
+    with dissolve
+    k_weird "Эм... Ум... Ага... Мне тоже приятно... Айзава-сенсей..."
+    queue music [ music_aizawa3, music_aizawa4, music_aizawa5 ]
+    show aizawa lecture at MoveTo(0.0, 0.5)
+    ta "ЯВИСЬ, СТАРОСТА!"
+    show aizawa meditate
+    show freya lecture behind aizawa at Rise(1.0, 0.25)
+    f "Меня зовут Фрейя!"
+    show aizawa complain
+    show freya irritated
+    ta "Тяжело, знаешь ли, запомнить имена тысячи учеников."
+    show aizawa fatigue
+    show freya shout at Bounce(3)
+    f "Запомните хотя бы имена УЧЕНИКОВ СВОЕГО КЛАССА!"
+    show aizawa chortleleft
+    show freya scowl
+    ta "Я не ваш классный руководитель и мне необязательно их помнить..."
+    show aizawa schemeleft
+    show freya annoyed
+    show crowd shout behind freya at Rise(0.5, 0.25)
+    c "ВЫ {b}НАШ{/b} КЛАССНЫЙ РУКОВОДИТЕЛЬ!!!"
+    show crowd calm
+    show aizawa confuzzled
+    ta "Правда? Я думала мой класс 2-В..."
+    show aizawa confused
+    show crowd angry
+    show freya bored
+    c "ЭТО {b}И ЕСТЬ{/b} 2-В!!!"
+    show crowd calm
+    k_unamused "..."
+    show aizawa resign
+    nar "вдруг показалось, что свалить из школы — было бы не такой уж и плохой идеей..."
+    show aizawa genki at Laugh(3)
+    show freya pout
+    ta "Ха-ха-ха! Не обращайте внимания на такие мелочи..."
+    show aizawa smug
+    show freya nag
+    f "Что именно вы подразумеваете под «мелочами»?!"
+    show aizawa awesome
+    show freya upset
+    ta "Проехали... Итак. Вы сделали домашнее задание?"
+    show aizawa snide
+    show crowd shout
+    show freya angry
+    c "Какое домашнее задание?!"
+    show crowd calm
+    show aizawa evilchuckle
+    ta "Как какое? Конечно же, по современной истории."
+    show aizawa smug
+    show freya calm at Bounce(1)
+    show freya annoyed
+    f "Но вы учитель английского."
+    show aizawa dumbfounded at Laugh(2)
+    ta "А? Ой-ой! Я и забыла, ХАХА!"
+    show aizawa nervous
+    show crowd shout
+    show freya tired
+    c "ХВАТИТ УЖЕ, СЕНСЕЙ!"
+    show crowd calm
+    show aizawa sadistic
+    show freya perturbed
+    ta "Ох! Просто сдайте уже наконец домашку."
+    show crowd angry
+    show aizawa revenge
+    show freya angry
+    c "О КАКОМ ДОМАШНЕМ ЗАДАНИИ ВЫ ГОВОРИТЕ?!"
+    play countermusic sound_chatter fadein 0.25
+    show crowd angry at VChatter
+    show aizawa reel at MoveTo(0.25, 0.25)
+    show freya defensive at MoveTo(0.75, 0.25)
+    $ renpy.pause(0.25)
+    show aizawa scream at HChatter(0.25, 0.28)
+    show freya shout at HChatter(0.75, 0.72)
+    nar "все мои мечты о нормальном первом дне в школе начали потихоньку рассыпаться..."
+    show crowd angry at Sit(0.25)
+    show aizawa savor at ExitLeft(0.25)
+    show freya bloodlust at ExitRight(0.25)
+    $ renpy.pause(0.25)
+    stop music fadeout 2
+    stop countermusic fadeout 0.5
+    scene bg cafeteria
+    with fade
+    "————— Обеденный перерыв —————"
+    play music music_roughday fadein 2.0 
+    k_sigh "*вздох*"
+    nar "после этого представления я даже вилку поднять не в состоянии"
+    show freya nervouschuckle at EnterLeft(0.0, 0.5)
+    f "Мне тебя жалко."
+    show freya nervous
+    k_nervous "Почему?"
+    show freya covet
+    f "Айзава-сенсей..."
+    show freya bashful
+    menu:
+        "Ну, согласись, она единственная в своём роде...":
+            jump interesting_en
+        "Похоже, она сбежала из психушки...":
+            jump crazy_en
+        "Может, она и странная, но у неё доброе сердце.":
+            jump nice_en
+label interesting_en:
+    k_sneaky "Она... интересная..."
+    show freya glad
+    f "Ну... Можно сказать она... «уникальная»"
+    show freya smile
+    k_sarcastic "Уникальная... как редкое животное?"
+    show freya cute at Bounce(1)
+    f "Именно!"
+    jump classified_en
+label crazy_en:
+    k_painful "Она сумасшедшая!"
+    show freya nervouschuckle
+    f "Она такая..."
+    jump classified_en
+label nice_en:
+    k_genki "Думаю, она хороший человек."
+    show freya omg at Laugh(2)
+    f "А?! ТЕБЕ ЧТО, ПРОМЫЛИ МОЗГИ?!"
+    show freya nervous
+    k_oops "???"
+    jump classified_en
+label classified_en:
+    show freya glad
+    f "Кстати..."
+    f "Можно тебя кое о чём спросить?"
+    show freya smile
+    k_happy "Конечно..."
+    show freya sarcastic
+    f "Почему ты сюда перевелась?"
+    show freya uneasy
+    stop music fadeout 1
+    k_sad "?.."
+    k_oops "А с этой школой что-то не так?"
+    $ renpy.pause(1.0)
+    show freya bashful
+    $ renpy.pause(0.5)
+    show freya tender
+    $ renpy.pause(0.25)
+    show freya love
+    f "Нет. Мне просто интересно."
+    show freya cute
+    f "Все, кого я спрашивала, рассказывали разные интересные истории."
+    show freya calm
+    play music music_flashback1 fadein 2.0
+    k_dream "Понятно... Ну..."
+    show freya curious at ExitLeft(0.25)
+    $ renpy.pause(0.25)
+    scene bg flashback1
+    with flashbackfade
+    k_happy "Родители уехали работать за границу, а меня отправили сюда..."
+    k_sad "Вернутся они нескоро, так что..."
+    scene bg flashback2
+    with flashbackfade
+    k_happy "Других родственников у меня здесь нет..."
+    k_genki "...поэтому они оставили меня на попечение директору этой школы, он давний друг нашей семьи."
+    scene bg flashback3
+    with flashbackfade
+    k_tired "Больше особо и нечего рассказывать."
+    k_happy "Но всё же..."
+    k_dream "Уверена, я проведу незабываемое время в Камелии!"
+    scene bg cafeteria
+    with flashbackfade
+    show freya sweetdream at EnterLeft(0.0, 0.5)
+    f "*кивает*"
+    k_relieved "А как насчёт тебя, Фрейя?"
+    show freya pleasantdream
+    f "Типа как у тебя..."
+    show freya sweetdream
+    stop music
+    k_nervous "..."
+    play music music_roughday
+    k_unamused "Другими словами, совершенно ничего интересного."
+    show freya mock
+    f "Всякое бывает."
+    show freya snicker
+    k_sigh "*вздыхает*"
+    show freya tender at ExitLeft(0.25)
+    $ renpy.pause(0.25)
+    stop music fadeout 2
+    scene bg classroom
+    with fade
+    "————— После занятий —————"
+    play music music_aizawa4 fadein 2.0
+    show aizawa pleasantdream at EnterLeft(0.0, 0.25)
+    ta "Что ж, на сегодня хватит."
+    show aizawa glad
+    ta "Если у вас есть какие-то вопросы, оставьте их на..."
+    play sound sound_doorslam
+    show aizawa astound
+    nar "распахнулась дверь"
+    show aizawa amused at MoveTo(1.0, 0.25)
+    show miharu grief behind aizawa at EnterLeft(0.0, 0.25)
+    u "ИЗВИНИТЕ, Я ОПОЗДАЛА!!!"
+    k_shock "Э! ТЫ?!!"
+    show aizawa naive
+    show miharu confused
+    u "Кто?.."
+    u "Я?.."
+    show miharu nervous
+    show aizawa inquisitive
+    k_sneaky "Мы «встречались» во дворе, помнишь?!"
+    show miharu wonder
+    show aizawa snide
+    u "Ох..."
+    show miharu curious
+    show aizawa cool
+    u "..."
+    show miharu excited at Bounce(1)
+    show aizawa evilsmile
+    u "Ох!"
+    queue music [ music_aizawa3, music_aizawa4, music_aizawa5 ]
+    stop countermusic fadeout 3.0
+    show aizawa evilchuckle at Bounce(3)
+    show miharu smile
+    ta "О, так вы уже знакомы?.."
+    show aizawa evilsmile
+    k_angry "НЕТ!"
+    show aizawa grateful
+    ta "А откуда это дружеское отношение?"
+    show aizawa drunksmile
+    k_stare "Эээ... Дружеское?"
+    show miharu cute
+    show aizawa awesome
+    ta "Что ж... Наконец-то ты пришла, Михару, правда занятия уже закончились."
+    show miharu sad at Bow(1)
+    show aizawa snide
+    m "Ох... Извините..."
+    show aizawa genki at Laugh(3)
+    ta "Ха-ха-ха! Не вопрос... Я такой замечательный человек, что прощаю тебя..."
+    show crowd angry behind miharu at Rise(0.50, 0.25)
+    show miharu happy
+    show aizawa smile
+    c "ЭТО ВЫ ЗАМЕЧАТЕЛЬНЫЙ ЧЕЛОВЕК?!! НУ-НУ..."
+    show crowd angry at Sit(0.25)
+    show miharu cute
+    show aizawa happy
+    ta "Можешь подойти в учительскую и взять материал за сегодняшний день."
+    show miharu genki at Bow(1)
+    show aizawa smile
+    m "Большое спасибо! Вы лучшая, Айзава-сенсей!"
+    show miharu smile at ExitLeft(0.25)
+    show aizawa squeal at Laugh(3)
+    ta "Ха-ха-ха!"
+    show aizawa savor
+    show crowd nervous behind aizawa at Rise(0.50, 0.25)
+    c "Ты, наверное, шутишь..."
+    show crowd nervous at Sit(0.25)
+    show aizawa orly
+    ta "Ну, теперь точно всё! В следующий раз не забывайте о домашнем задании!"
+    show aizawa snicker at ExitRight(0.25)
+    show crowd angry behind aizawa at Rise(0.50, 0.25)
+    c "НО ВЫ НИЧЕГО НАМ НЕ ЗАДАЛИ!!!"
+    show freya chide at Rise(0.50, 0.25)
+    f "*Вздох* Одни проблемы с ней..."
+    show crowd calm
+    show freya annoyed at Sit(0.25)
+    $ renpy.music.set_volume(0.25, 1, channel="music")
+    play countermusic sound_chatter fadein 1.0
+    show crowd calm at VChatter
+    nar "Айзава-сенсей вышла из класса..."
+    nar "ученики с шумом начали собирать свои вещи..."
+    nar "хотя, не так шумно, как... "
+    stop countermusic fadeout 2.0
+    $ renpy.music.set_volume(1, 1, channel="music")
+    m "Ах, Фрейя!"
+    play countermusic music_miharu3 fadein 3.0
+    stop music fadeout 3.0
+    show crowd calm at Sit(0.25)
+    show miharu happy at EnterLeft(0.0, 0.25)
+    show freya cool at EnterRight(1.0, 0.25)
+    m "Извини, что снова беспокою. Можешь показать мне конспекты?"
+    m "А я нарисую тебе что-нибудь..."
+    show freya cute
+    f "Ох, не надо рисовать... Я и так рада помочь."
+    show miharu genki at Bounce(1)
+    show freya calm
+    m "Ты замечательная подруга, лучшая!"
+    show freya curious
+    show prop bookworm at Appear(0.15, 0.4, 0.0, 0.0)
+    with dissolve
+    $ renpy.pause(0.5)
+    show miharu relieved
+    show freya angry
+    m "В благодарность тебе, эти рисунки..."
+    show prop bookworm at MoveTo(0.8,1.0)
+    $ renpy.pause(1.0)
+    show freya psycho at Bounce(3)
+    show prop bookworm at Fling(0.8, 0.4, -0.30, 0.35, 0.35, 1095)
+    $ renpy.pause(0.15)
+    show miharu grief at Fling (0.0, 0.0, -1.0, -0.5, 0.5, 790)
+    $ renpy.play(sound_collide)
+    stop countermusic
+    hide prop bookworm
+    f "Не надо! Просто возьми конспекты!!!"
+    hide miharu
+    queue music [ music_miharu1, music_miharu3 ]
+    show freya disturbed
+    $ renpy.pause(1.00)
+    show freya meditate
+    $ renpy.pause(0.50)
+    nar "ох... это у меня воображение разыгралось, или..."
+    show freya glad at Bounce(1)
+    f "Ах да! Кана. Познакомься — это Михару. Она будет твоей соседкой по комнате."
+    show freya smile at ExitRight(0.25)
+    show miharu happybandage at EnterLeft(0.5, 0.5)
+    m "О, так это она к нам недавно перевелась?"
+    show miharu uncomfortablebandage
+    m "Прости, что доставила тебе сегодня неприятности."
+    menu:
+        "Это так мило, она до сих пор переживает из-за случившегося.":
+            jump forget_en
+        "Ох нет! Она так ПРОСТО не отделается!":
+            jump hell_en
+label forget_en:
+    k_relieved "Всё нормально, я уже забыла об этом."
+    show miharu relievedbandage
+    m "Какой ты добрый человек..."
+    k_genki "Приятно познакомиться, Михару."
+    jump conclusion_en
+label hell_en:
+    play sound sound_thunder
+    show lightning
+    show miharu dreadbandage
+    k_furious "Какого ЧЁРТА я должна забыть ТАКОЕ?!"
+    hide lightning
+    show miharu griefbandage at Bow(1)
+    m "Кья-я-я!!! И-и-извини!!!"
+    k_scheme "Но, думаю, я смогу это пережить, поэтому..."
+    show miharu curiousbandage
+    k_genki "Приятно познакомиться, Михару..."
+    jump conclusion_en
+label conclusion_en:
+    show miharu excitedbandage
+    m "Мне тоже очень приятно, Кана."
+    show freya cute at EnterRight(1.0, 0.25)
+    show miharu cutebandage
+    f "Ну..."
+    f "Думаю, пора возвращаться в общежитие."
+    show freya calm at ExitRight(0.25)
+    show miharu smilebandage at ExitRight(0.5)
+    $ renpy.pause(0.5)
+    stop music fadeout 3.0
+    scene bg dorm
+    with introfade
+    "————— Общежитие Камелии —————"
+    play music music_mellow
+    scene bg dormhall
+    with dissolve
+    show freya keen at EnterRight(0.5, 0.75)
+    f "Это наше общежитие. Все ученицы Камелии живут здесь."
+    f "В здании три этажа, плюс подвал, но нам туда спускаться нельзя..."
+    show freya cute at MoveTo(1.0, 0.5)
+    f "На первом этаже у нас регистратура, телефон, кафетерий и кладовые."
+    show freya curious at MoveTo(0.0, 0.75)
+    f "А на втором этаже находятся наши комнаты, уборные и душевые."
+    show freya love at MoveTo(0.5, 0.5)
+    f "В каждой комнате четыре кровати..."
+    f "...поэтому, кроме тебя, там будут ещё три девушки."
+    show freya glad at MoveTo(0.0, 0.5)
+    f "Твоя комната, #127, это на втором этаже, второй поворот направо после лестничной площадки."
+    show freya smile at MoveTo(0.5, 0.25)
+    show miharu smug at EnterLeft(0.0, 0.25)
+    f "И, кстати, вы с Михару живёте в одной комнате."
+    show freya smile at MoveTo(0.0, 0.25)
+    show miharu smile at ExitLeft(0.25)
+    $ renpy.pause(0.75)
+    show freya keen
+    f "Есть ещё вопросы?"
+    show freya cool
+    menu:
+        "Ух-ты! Она так  много рассказала...":
+            jump enough_en
+        "А кто остальные мои соседки?":
+            jump two_en
+label enough_en:
+    k_nervous "Кажется, всё понятно..."
+    show freya glad
+    f "Хорошо."
+    jump fine_en
+label two_en:
+    k_nervous "А ты знаешь, кто остальные девушки, с которыми я буду делить комнату?"
+    show freya sarcastic
+    f "Ну..."
+    f "Это две старшеклассницы: Рэйна и «КОРОЛЕВА»"
+    show freya weary
+    k_baka "Королева? Это имя такое?"
+    show freya yearn
+    f "Сейчас да."
+    show freya love
+    f "Кстати, если вдруг захочешь напечатать её имя, убедись, что нажат КАПС."
+    show freya tender
+    k_genki "Почему? Она что, какая-то важная особа, или типа того?"
+    $ renpy.pause(0.75)
+    show freya suspicious
+    f "Верь мне, просто делай, как я говорю."
+    show freya snide
+    k_baka "А?"
+    show freya evil
+    f "Если не хочешь неприятностей..."
+    show freya cynical
+    k_gasp "!!!"
+    $ renpy.pause(1.0)
+    jump fine_en
+label fine_en:
+    show freya glad
+    f "В общем, если понадобится помощь, возникнут вопросы, или просто захочешь проведать меня..."
+    show freya cute
+    f "Приходи, не стесняйся. Комната #256. Это на третьем этаже."
+    show freya calm
+    k_happy "Хорошо, спасибо!"
+    show freya smile at ExitRight(0.75)
+    nar "Фрейя ушла"
+    k_genki "Что ж, пошли в нашу комнату."
+    k_smile "..."
+    show miharu confused at EnterLeft(0.0, 0.25)
+    m "???"
+    k_sarcastic "Так... Хорошо. Если честно, я ничего не запомнила из того, что сказала Фрейя."
+    show miharu relieved
+    k_waterfall "Покажешь дорогу?"
+    show miharu glad at Bounce(1)
+    m "Конечно! Пошли."
+    scene bg dormhall1
+    with dissolve
+    $ renpy.pause(0.25)
+    show miharu chibi1 at Bobble(1.15, 0.6, -0.15, 0.6, 0.35, 2.0)
+    nar "и мы пошли"
+    scene bg dormhall2
+    with dissolve
+    show miharu chibi1 at Bobble(-0.15, 0.0, 1.15, 0.2, 0.25, 3.0)
+    nar "к моему удивлению, Михару, кажется, заблудилась"
+    scene bg dormhall3
+    with dissolve
+    show miharu chibi1 at Fling(1.15, 0.7, -0.15, 0.3, 2.00, 365.0)
+    nar "она водила меня по коридорам, словно по лабиринту..."
+    scene black
+    with dissolve
+    stop music fadeout 3.0
+    nar "...наконец мы нашли свою комнату"
+    scene bg dormroom
+    with dissolve
+    play music music_quirky
+    show miharu genki at EnterLeft(0.0, 0.25)
+    m "А вот и мы!..  Комната, милая комната!"
+    k_swirl "АГХ!!!  Никогда... никогда не устраивайся работать гидом!"
+    show miharu smile at ExitLeft(0.25)
+    nar "мне хотелось упасть на кровать и отдохнуть, но какая из них моя?.."
+    show prop haku at Appear(0.45, 0.2, 0.0, 0.0)
+    with dissolve
+    nar "оглядевшись, я заметила в комнате много интересных вещей"
+    k_squeal "Ах! Какая милая кукла!"
+    k_happy "Твоя?"
+    show miharu happy at EnterLeft(0.0, 0.25)
+    m "Нет, это собственность «КОРОЛЕВЫ»"
+    k_ehhh "А?!!"
+    nar "значит, эта «КОРОЛЕВА» любит играть в куклы?"
+    nar "что же она за человек?"
+    k_sarcastic "Дай мне тут немного освоиться..."
+    show miharu smile at ExitRight(0.75)
+    $ renpy.pause(0.25)
+    show prop haku at ExitRight(0.50)
+    nar "мы прошли в комнату"
+    nar "пока Михару просматривала конспекты, я распаковала свою сумку"
+    nar "вытащив одежду, фотографии и пару  украшений..."
+    nar "я достала свой нетбук и села за стол"
+    show miharu genki at EnterRight(1.0, 0.25)
+    m "О! Какой милый!"
+    show miharu worried
+    m "Он был в сумке, которую ты выронила, когда я в тебя врезалась?"
+    k_genki "Ага."
+    show miharu concern
+    m "А всё нормально?.."
+    k_smile "Ммм?"
+    show miharu curious at MoveTo(0.85, 0.25)
+    m "Эта штука..."
+    k_glad "А, нетбук?  Всё нормально."
+    show prop netbook at Appear(0.5, 0.5, 0.5, 0.5)
+    with dissolve
+    nar "я взяла нетбук со стола и покрутила его в руках"
+    show miharu wonder
+    nar "вообще-то он очень лёгкий, но Михару смотрит на меня, словно я супер-сильная"
+    show prop netbook at Shake(0.4, 2)
+    k_genki "Видишь? Ни царапинки."
+    show miharu relieved at Bounce(1)
+    m "Ах! Я так рада это слышать!"
+    k_happy "Да, он милый и очень крепкий."
+    show prop netbook at Heft(0.4, 3)
+    show miharu cute
+    k_smug "Я роняла его уже раз десять, но он до сих пор работает!"
+    show miharu genki
+    m "Класс! И тако-о-о-ой милый цвет!"
+    show miharu excited
+    m "Он, наверное, стоит целое состояние..."
+    show miharu cute
+    k_happy "Не совсем. Я на него потратила около... 350 баксов."
+    k_relieved "Вполне приемлемая цена для компьютера, бывают и дешевле."
+    show miharu genki at Bounce(1)
+    m "Удивительно! Я думала, что они намного дороже!"
+    hide prop netbook
+    with dissolve
+    show miharu smile
+    k_smile "Хе-хе..."
+    show miharu grief at MoveTo(0.5, 0.25)
+    m "Кстати о низких ценах, я очень бедная и голодная..."
+    k_oops "?!"
+    show miharu excited at Bounce(4)
+    m "...так что давай сходим в «Бомбоубежище» и поедим!"
+    show miharu cute
+    k_nervous "Э... «Бомбоубежище»?"
+    show miharu happy
+    m "Мы так наше кафе в общежитии называем."
+    show miharu cute
+    k_weird "Эм... хорошо..."
+    nar "весь день полон странностей, нет смысла чему-то удивляться"
+    k_nervous "Хорошо... Давай сходим и перекусим."
+    show miharu glad at Bounce(2)
+    $ renpy.pause(0.25)
+    show miharu smile at ExitLeft(0.5)
+    $ renpy.pause(0.5)
+    stop music fadeout 3.0
+    scene bg bombshelter
+    with slowdissolve
+    "————— «Бомбоубежище» —————"
+    play music music_bombshelter1 fadein 2.0 
+    nar "теперь понятно, почему его называют «Бомбоубежищем»"
+    nar "нет окон, бетонные стены, тусклое освещение, неудобные стулья, бедненькое убранство..."
+    nar "помещение больше подходит для защиты от авиаударов, чем на роль кафетерия"
+    nar "не удивительно, что еда здесь такая дешевая..."
+    show miharu genki at Rise(0.5, 0.25)
+    m "Ура, ура!  С самого утра ничего не ела!"
+    show miharu smile
+    nar "поговорка «Голод – лучшая приправа» в действии"
+    play sound sound_thunderstep
+    with vpunch
+    nar "потому что хуже еды я в жизни не видела"
+    show reina silhoutte behind miharu at EnterRight(0.7, 2.5)
+    play sound sound_thunderstep
+    with vpunch
+    show ambient darken
+    with slowdissolve
+    play sound sound_thunderstep
+    with vpunch
+    nar "и только я собралась пошутить..."
+    show miharu wonder
+    nar "...как вдруг позади Михару появилась высокая фигура и схватила её"
+    show reina relievedblush
+    show ambient darkenhole
+    with dissolve
+    u "Михару, дорогая!~ Давно не виделись!"
+    show miharu happy
+    show reina tenderblush
+    m "Э... «давно»?"
+    show reina relievedblush
+    u "Да, с самого утра."
+    show reina desire
+    u "Но без тебя, словно вечность прошла..."
+    hide ambient darkenhole
+    show miharu cute
+    show reina lovestarved
+    k_sigh "Экхм!"
+    show reina stare
+    k_sarcastic "Извините, что отвлекаю, могу я узнать, кто вы?"
+    show reina calm at Bounce(1)
+    show reina oppose
+    u "Её любовница."
+    show miharu uncomfortable
+    show reina frown
+    nar "ГХ! Ответила не задумываясь!"
+    show miharu genki at Laugh(3)
+    show reina lust
+    m "Ха-ха-ха! Что ты такое говоришь? Какая «любовница»? Мы просто живём в одной комнате."
+    show miharu smile
+    show reina hentai
+    k_nervous "Что?"
+    show miharu happy
+    show reina fantasize
+    m "Это Рэйна. Она наша соседка по комнате."
+    show miharu cute
+    show reina blush
+    k_omg "Ээ?!"
+    show miharu smile at Sit(0.25)
+    show reina taunt at MoveTo(0.5, 0.75)
+    r "Понятно... Та самая новенькая..."
+    show reina mock
+    r "Эм-м-м... Забыла, как её там, то ли Кана, то ли Хана..."
+    play sound sound_wind
+    show ambient icy
+    with dissolve
+    show reina fufufu
+    nar "я почти физически ощущаю на себе холодный взгляд ревности"
+    show reina sinister
+    k_nervous "Кана..."
+    hide ambient icy
+    with dissolve
+    show reina reluctant
+    r "Ах да... Кана."
+    show reina evil
+    r "Я Рэйна. Приятно познакомиться."
+    show reina smug
+    k_nervous "Э... Приятно познакомиться... Рэйна-семпай."
+    show reina chastise
+    r "Можно просто Рэйна... "
+    show reina happydream at MoveTo(0.7, 0.25)
+    show miharu calm at Rise(0.5, 0.25)
+    nar "и она снова переключила внимание на Михару"
+    show reina kawaii
+    r "Михару, дорогая, что ты хочешь съесть?"
+    r "Я угощаю..."
+    show reina kawaiismile
+    $ renpy.pause(0.5)
+    show miharu genki at Bounce(3)
+    show prop foodbubble1 at Appear(0.30, 0.18, 0.5, 0.5)
+    show prop foodbubble1 at Heft(0.55, 20)
+    m "Ах, как мило с твоей стороны! Спасибо! Я бы не отказалась от «бигун горен» (лапша с луком)!"
+    hide prop foodbubble1
+    show miharu smile
+    show reina happy
+    r "Для тебя, всё что угодно..."
+    show prop foodbubble2 at Appear(0.25, 0.60, 0.5, 0.5)
+    show prop foodbubble2 at Heft(0.55, 20)
+    show miharu calm
+    show reina smile
+    k_genki "Тогда я хочу карри, пожалуйста."
+    show prop foodbubble2 at Fling(0.25, 0.60, -0.5, 0.7, 0.5, 730)
+    show miharu worried
+    show reina suspicious
+    r "Тебя я не спрашивала."
+    hide prop foodbubble2
+    show reina angry
+    k_sneaky "О?"
+    show miharu genki at Laugh(3)
+    show reina bashfulleft
+    m "Ха-ха-ха! Ох, Рэйна, не говори так."
+    show miharu glad
+    show reina enchanted
+    m "Люди могут тебя неправильно понять, ха-ха-ха..."
+    show miharu smile
+    show reina awkward
+    nar "Михару думает, что Рэйна просто шутит, но на самом деле она на полном серьёзе..."
+    show reina lecherous
+    nar "очевидно, что у неё свои планы на Михару, и никак иначе"
+    show reina naughtydream
+    nar "если это так, то... надо попробовать..."
+    show miharu confused
+    show reina mesmerized
+    k_sigh "Ладно, схожу сама возьму..."
+    show miharu happy at MoveTo(0.0, 0.5)
+    show reina embarrassed at Bounce(1)
+    m "Ну, тогда и я пойду с тобой."
+    show reina gulp at Bounce(3)
+    $ renpy.pause(0.15)
+    show reina overprotect at MoveTo(0.15, 0.25)
+    show miharu cute
+    r "НЕТ, ПОСТОЙ!"
+    show reina tense
+    nar "хе-хе, попалась!"
+    show reina awkward
+    r "Хорошо, позвольте мне принести ваши заказы."
+    show miharu genki at Bow(1)
+    show reina nervousblush
+    m "Правда?! Огромное спаси-и-и-бо!"
+    show miharu smile
+    show reina genki
+    r "Без проблем, моя дорогая Михару."
+    show ambient reinaglare
+    with dissolve
+    show reina evil
+    nar "чувство победы быстро испарилось, как только я увидела злобную ухмылку на лице Рэйны"
+    nar "меня аж дрожь пробрала, когда я представила, что за «блюдо» она мне принесёт"
+    hide ambient reinaglare
+    show prop foodbubble3 at Appear(0.85, 0.25, 0.5, 0.5)
+    show prop foodbubble3 at Heft(0.55, 20)
+    show miharu curious
+    show reina shock
+    ta "Раз ты пошла, то прихвати мне жареную курицу! Спасибо!"
+    hide prop foodbubble3
+    nar "..."
+    nar "я нервно поворачивюсь в сторону этого противного голоса"
+    menu:    
+        "Стоит крикнуть громко?..":
+            jump kya_en
+        "...или ОЧЕНЬ громко?":
+            jump gya_en
+label kya_en:
+    show miharu uncomfortable
+    k_swirl "КЬЯ-Я-Я!!!"
+    show reina huh at Bounce(1)
+    r "ГРХ?!!"
+    show aizawa calm at EnterRight(1.0, 0.25)
+    show miharu confused
+    show reina chide
+    ta "Что за жалкая реакция?!"
+    jump reaction_en
+label gya_en:
+    show redsiren
+    play sound sound_airraidsiren
+    show miharu grief
+    k_shock "ГЬЯ-Я-Я-Я-Я-Я!!!"
+    show reina reprimand at Bounce(5)
+    r "А-А-А-ГРХ?!!"
+    show aizawa savor behind redsiren at EnterRight(1.0, 0.25)
+    $ renpy.pause(0.25)
+    show aizawa squeal at Laugh(2)
+    show miharu curious
+    show reina ippenshindemiru
+    ta "А-га! Вот это страсть! Вот это реакция! Хххахаха!"
+    hide redsiren
+    stop sound
+    jump reaction_en
+label reaction_en:
+    show miharu glad at Bow(1)
+    show aizawa snide
+    show reina frustrated
+    m "Добрый вечер, Айзава-сенсей."
+    show miharu smile
+    show aizawa grateful
+    ta "Ох! Михару, добрый вечер!"
+    show miharu happy
+    show aizawa amused
+    show reina impatient
+    m "Айзава-сенсей, что вас сюда привело?"
+    show miharu cute
+    show aizawa cute
+    ta "Бесплатный ужин, конечно~"
+    show aizawa smug
+    show miharu confused at ExitLeft(1.00)
+    show reina smile at MoveTo(-0.4, 0.75)
+    $ renpy.pause(1.25)
+    hide miharu
+    show reina angry at MoveTo(0.5, 0.15)
+    show aizawa baka
+    $ renpy.pause(0.25)
+    show reina shout at Bounce(3)
+    r "Вы здесь не учитесь! Так что сами за себя платите!"
+    show aizawa complain at Laugh(2)
+    show reina angry
+    ta "Ай! Ай! Как грубо. Я тоже ученица, знаешь ли."
+    show aizawa fatigue
+    show reina chastise
+    r "{b}БЫЛИ{/b} ученицей..."
+    show aizawa meditate
+    play sound sound_gong
+    show ambient zen behind reina at Appear(0.0, 0.0, 0.0, 0.0)
+    with slowdissolve
+    show aizawa lecture
+    show reina bored
+    ta "Дитя моё... На тропе жизни, ты всегда остаёшься учеником..."
+    show aizawa pity
+    show reina calm at Bounce(1)
+    show ambient zen behind reina at Fling(0.0, 0.0, 0.0, 2.5, 0.75, 365)
+    show reina nag
+    r "Не надо тут философии!  Вы окончили школу пять лет назад!"
+    show reina complain
+    r "Если хотите ужин – будьте добры, ОПЛАТИТЕ ЕГО!"
+    hide ambient zen
+    show aizawa yelp at Bounce(2)
+    show reina chide
+    ta "Ав-ва-ва! Злая ты!"
+    show aizawa accuse
+    ta "Из-за своего высокого роста ты стала такой ворчливой!"
+    show reina blush
+    show aizawa stare
+    stop music
+    r "..."
+    show reina shameshiftleft at MoveTo(0.25, 0.5)
+    $ renpy.pause(1.0)
+    show aizawa revenge
+    show reina shameshiftleft at MoveTo(0.15, 0.25)
+    $ renpy.pause(0.5)
+    show reina shameshiftleft at MoveTo(0.0, 0.25)
+    $ renpy.pause(0.75)
+    play music music_crazyfight1
+    show reina shameleft
+    r "У... {p}... {p}...{=whispered}нас с вами одинаковый рост...{/=whispered}"
+    show aizawa orly at Laugh(4)
+    show reina shameright
+    ta "Ох-хо-хо! Может, так оно и было..."
+    show aizawa squeal
+    show reina furiousblush
+    ta "Но теперь ты такая  {b}ОГРОМНАЯ{/b}..."
+    show angrytwitch at Appear(0.4, 0.1, 0.5, 0.5)
+    show aizawa evilchuckle
+    ta "Ты выше и привлекательнее любого парня!"
+    show aizawa genki at Laugh(4)
+    show reina impatient
+    ta "Ха-ха-ха! Осторожнее, мой принц, я могу в тебя влюбиться!"
+    show aizawa amused
+    hide angrytwitch
+    $ renpy.pause(2.5)
+    show reina taunt at Laugh(3)
+    r "Хе-хе-хе!  Ну, испытай удачу..."
+    show aizawa astound
+    show reina mock
+    r "Я на таких плебеек, как ты, внимания не обращаю..."
+    show aizawa unamused
+    show angrytwitch at Appear(0.9, 0.1, 0.5, 0.5)
+    show reina evil
+    r "У тебя нет шансов."
+    show reina winkleft
+    r "{b}«ХА! ХА! ХА!»{/b}"
+    show reina smug
+    stop music
+    hide angrytwitch
+    $ renpy.pause(3.0)
+    play music music_crazyfight2
+    play countermusic sound_catfight fadein 0.25
+    show reina scold at MoveTo(0.25, 0.25)
+    show aizawa frustrated at MoveTo(0.75, 0.25)
+    $ renpy.pause(0.25)
+    show reina shout at HChatter(0.25, 0.28)
+    show aizawa scream at HChatter(0.75, 0.72)
+    ta "Они буквально сражаются словами!!!"
+    $ renpy.pause(2.0)
+    nar "весело, конечно, наблюдать за их руганью..."
+    nar "...но надо бы их как-то остановить, пока эта злая аура не поглотила весь кофетерий"
+    stop music
+    stop countermusic
+    m "Хватит, прекратите уже!"
+    show reina gulp at MoveTo(0.25, 0.25)
+    show aizawa confuzzled at MoveTo(0.75, 0.25)
+    nar "к счастью, вмешалась Михару..."
+    play music music_angelic
+    play countermusic sound_bells
+    show angelicblossom
+    show ambient heaven behind reina
+    with slowdissolve
+    $ renpy.pause(2.0)
+    show reina oops at MoveTo(-0.3, 0.25)
+    show aizawa baka at MoveTo(1.0, 0.25)
+    $ renpy.pause(0.25)
+    show miharu chibi2 behind reina at Appear(0.5, 0.5, 0.5, 0.5)
+    with dissolve
+    $ renpy.pause(0.5)
+    show miharu chibi2 behind reina at Fling(0.5, 0.5, 0.5, 0.20, 20.0, 0.0)
+    m "Давайте не будем ругаться? Помните, мы цивилизованные люди..."
+    m "Мы должны ладить друг с другом и создавать хорошие отношения..."
+    show reina bored
+    m "Разве есть какая-то польза от издевательства друг над другом?"
+    show reina chide
+    r "ЕСТЬ!"
+    show aizawa aho
+    show reina bored
+    show overlay garbage behind miharu at Fling(0.5, -1.0, 0.5, 0.5, 0.25, 0.0)
+    $ renpy.pause(0.25)
+    show overlay garbage at Appear (0.5, 0.5, 0.5, 0.5)
+    play sound sound_thunderstep
+    stop music
+    stop countermusic
+    hide angelicblossom
+    show overlay garbage behind miharu at Rattle(0.5, 0.52, 5, 0.05)
+    show miharu chibi2 behind reina at QuickFling(0.3, 1.5, 1.2, -115)
+    m "Ню-ю-ю?.."
+    show aizawa confused
+    show overlay garbage at Appear (0.5, 0.5, 0.5, 0.5)
+    hide ambient heaven
+    hide miharu
+    show reina complain
+    r "Я наслажусь местью..."
+    show reina scold at Bounce(1)
+    r "...за её попытку убить меня, в прошлом году, этим своим «смертоносным тортом ко дню рожденья»!"
+    show aizawa moronic
+    show reina angry
+    play music music_ridiculous fadein 2.0
+    show prop blackforest1 behind reina at Appear(0.5, 0.4, 0.5, 0.5) 
+    with dissolve
+    ta "Как подло! Я ведь так старалась!"
+    show aizawa yelp at Bounce(2)
+    show reina threaten
+    ta "Я делала его три дня без остановки!"
+    show reina reprimand at Bounce(1)
+    show aizawa pity
+    r "И потом оставили его на улице на четыре дня!"
+    play countermusic sound_poison fadein 2.0
+    show prop blackforest2 behind reina 
+    with slowdissolve
+    show aizawa dumbfounded
+    show reina pout
+    r "И никаких угрызений совести, после того как послали мне его – полный... каких-то растущих из него штук..."
+    show reina pout at Bounce(2)
+    show aizawa nervous
+    r "...сказали, что это новый рецепт Шварцвальдского торта!"
+    show miharu excited at EnterLeft (0.2, 0.25)
+    show reina mope
+    m "Ха-ха! Ох! Кажется, я это помню!.."
+    stop countermusic
+    hide prop blackforest2
+    with dissolve
+    show overlay hospital
+    with dissolve
+    show miharu happy
+    show aizawa chastiseright
+    show reina hopeless
+    m "В общем, все попадали в обморок после того как съели его, и  были госпитализированы на целую неделю с пищевым отравлением..."
+    show miharu glad
+    show aizawa schemeright
+    show reina speechless
+    m "После этого Айзава-сенсей стала известна как «Пекарь-убийца»."
+    hide overlay hospital
+    with dissolve
+    show aizawa chortleright at Laugh(2)
+    show miharu smile
+    show reina impatient
+    ta "Ну-ну, тебе надо говорить это более драматично."
+    show aizawa orly
+    ta "... я хотела, чтобы вы выросли сильными и здоровыми, ХА! ХА!!"
+    show aizawa nervous
+    stop music
+    $ renpy.pause(2.50)
+    show reina ippenshindemiru
+    r "ХВАТИТ... {p}РЖАТЬ... {p}{b}СЕНСЕЙ!!!{/b}"
+    play music music_crazyfight3 fadein 1.0
+    play countermusic sound_war fadein 2.0
+    show miharu grief at Sit(0.25)
+    show reina scold at MoveTo(0.25, 0.25)
+    show aizawa shock at MoveTo(0.75, 0.25)
+    $ renpy.pause(0.25) 
+    show reina shout at HChatter(0.25, 0.28)
+    show aizawa scream at HChatter(0.75, 0.72)
+    $ renpy.pause(2.0)
+    nar "*вздох*... я, кажется, начинаю понимать, почему злится Рэйна"
+    hide miharu
+    show ambient fire behind reina
+    with dissolve
+    nar "но теперь они ругаются ещё громче..."
+    show crowd calm behind ambient
+    with dissolve
+    nar "я почти уверена, ученики собрались в кафетерии, только чтобы насладиться этим спектаклем"
+    k_unamused "Угх! Пожалуйста, прекратите... Неудобно же перед людьми!"
+    show miharu nervous behind aizawa at EnterLeft (0.5, 0.25)
+    $ renpy.pause(0.25)
+    show miharu dread behind aizawa at HChatter(0.5, 0.52)
+    m "Пожалуйста, прекратите!"
+    show miharu grief at QuickFling (-1.0, -0.5, 0.5, 550)
+    show prop chair behind crowd at Appear(0.1, 0.8, 0.5, 0.5)
+    show prop chair behind crowd at SetPosition(0.2, -45.0)
+    show prop chair behind crowd at SendTo(0.1, 0.45, 1.0)
+    nar "а они всё продолжают ругаться... похоже, их ничто не остановит..."
+    hide miharu
+    show angrytwitch at Appear(0.15, 0.35, 0.5, 0.5)
+    u "{b}Вы что, не слышали, что сказала Михару?!{/b}"
+    u "{b}ПРЕКРАТИТЕ ЭТИ ГЛУПОСТИ!!!{/b}"
+    hide angrytwitch
+    hide prop chair
+    show prop chair behind ambient at Appear(0.1, 0.45, 0.5, 0.5)
+    show prop chair behind ambient at SetPosition(0.2, -45.0)
+    show prop chair behind ambient at BackgroundFling(0.5, 0.3, 1.0, 655, 1.0)
+    $ renpy.pause(1.0)
+    stop music
+    stop countermusic
+    $ renpy.play(sound_collide)
+    show reina shock at QuickFling (-0.2, -1.5, 0.5, 550)
+    show aizawa aho at QuickFling (1.2, -1.5, 0.5, 550)
+    $ renpy.pause(0.15)
+    hide prop chair
+    show crowd nervous
+    nar "вслед за выкриком из толпы полетел стул"
+    hide reina
+    hide aizawa
+    show reina fuss behind crowd at SetPosition(0.2, 0.0)
+    show reina fuss behind crowd at Fling(0.6, -1.0, 0.6, 0.8, 1.0, 655)
+    $ renpy.pause(0.25)
+    show aizawa cry behind crowd at SetPosition(0.2, 0.0)
+    show aizawa cry behind crowd at Fling(0.8, -1.0, 0.8, 0.8, 1.0, 655)
+    $ renpy.pause(1.25)
+    hide ambient fire
+    with dissolve
+    show queen frown behind crowd at Appear(0.1, 0.8, 0.5, 0.5)
+    show queen frown behind crowd at SetPosition(0.2, 0.0)
+    show queen frown behind crowd at SendTo(0.1, 0.5, 1.0)
+    $ renpy.pause(1.00)
+    show queen frown behind crowd at Bobble(0.1, 0.5, 0.4, 0.5, 0.4, 1.0)
+    $ renpy.pause(1.0)
+    show queen frown behind crow at SendTo(0.4, 0.5, 0.0)
+    nar "после того, как волнения улеглись, из толпы вышла изысканная девушка и направилась в нашу сторону"
+    show angrytwitch at Appear(0.35, 0.35, 0.5, 0.5)
+    u "Ну-ну... Так это вы испортили моё настроение..."
+    hide angrytwitch
+    u "Я всего лишь хотела насладиться обедом в тишине и спокойствии ..."
+    u "*вздох* Но вы... а, в особенности, Айзава-сенсей..."
+    show aizawa complain behind crowd at SendTo(0.8, 0.5, 0.15)
+    ta "ОПЯТЬ Я?!"
+    show aizawa complain behind crowd at SendTo(0.8, 0.8, 0.25)
+    u "...пришли и испортили его..."
+    hide reina
+    hide aizawa
+    show queen frown behind crowd at Heft(0.45, 3) 
+    u "Это не должно оставаться безнаказанным!!"
+    nar "чтобы не ввязаться в очередную драму, я тихо шепчу Михару..."
+    k_sarcastic "{=whispered}Она тоже жертва Шварцвальдского торта?{/=whispered}"
+    show miharu concern at EnterLeft(0.0, 0.25)
+    m "{=whispered}Угу...{/=whispered}"
+    show miharu doubt
+    k_sneaky "{=whispered}А кто она?{/=whispered}"
+    show miharu concern
+    m "{=whispered}«КОРОЛЕВА»{/=whispered}"
+    show miharu doubt
+    k_dream "{=whispered}Ах, «КОРОЛЕВА»...  «КОРОЛЕВА»...{/=whispered}"
+    show miharu dread
+    k_omg "{b}ЧТО?!{/b}"
+    show queen frown behind crowd at Heft(0.45, 1)
+    $ renpy.pause(0.25)
+    show queen frown behind crowd at ExitRight(0.5)
+    play music music_queen1 fadein 4.0
+    nar "мой крик прервал разборки..."
+    hide queen
+    show queen lecture at EnterRight(1.0, 0.25)
+    show miharu nervous at MoveTo(-0.3, 0.25)
+    q "КТО ПОСМЕЛ?!!"
+    show queen frown
+    nar "мне становится не по себе, когда она со странной ухмылкой на лице поворачивается к толпе в поисках виновника"
+    nar "к счастью, другой голос раздаётся из толпы и спасает меня от надвигающейся опасности"
+    show freya berate at EnterLeft(0.0, 0.25)
+    f "Прошу тебя, «КОРОЛЕВА», не начинай очередной скандал!"
+    show freya glare
+    k_incredulous "Фрейя! И ты тоже здесь!"
+    show freya irked
+    f "Конечно. Все, кто живёт в общежитии, приходят сюда поесть."
+    show freya troubled
+    show queen bored
+    nar "Все? Скряги..."
+    show freya fury at MoveTo(0.5, 0.25)
+    $ renpy.pause(0.25)
+    show freya shout at Bounce(4)
+    $ renpy.pause(0.5)
+    show miharu confused at MoveTo(0.0, 1.0)
+    f "{b}Ладно... Народ, возвращайтесь на свои места. Здесь не на что смотреть!{/b}"
+    show freya irritated
+    hide crowd nervous
+    with dissolve
+    nar "в толпе все дружно застонали, возмущаясь скорому окончанию представления"
+    show freya obligated at Sit (0.25)
+    $ renpy.pause(1.0)
+    show freya reprimand at Rise(0.5, 0.25)
+    show aizawa aho at Rise(0.7, 0.25)
+    $ renpy.pause(0.25)
+    show miharu cute
+    show queen frown
+    f "Айзава-сенсей, сколько раз мне вам ещё повторять?!"
+    show freya scold at Bounce(1)
+    show aizawa confused
+    f "Идите уже домой, в конце концов!"
+    show freya shout at Bounce(3)
+    show aizawa confuzzled
+    f "Хватит вести себя как ребёнок! Не подавайте дурного примера ученикам!"
+    show miharu smile
+    show aizawa cry
+    show freya irritated
+    ta "Но я не оплатила ренту и не могу вернуться домой..."
+    show aizawa weep
+    show freya lecture
+    show queen calm
+    f "Разве вам не платили зарплату в этом месяце?"
+    show aizawa whimper
+    show freya irritated
+    ta "Конечно платили, они никогда её не задерживают!"
+    show aizawa aho
+    show freya leer
+    ta "Но... понимаете... Я, как бы, за покупками ходила..."
+    show miharu uncomfortable
+    show queen bored
+    ta "...а когда спохватилась, то уже ничего не осталось..."
+    show aizawa orly at Laugh(8)
+    show freya angry
+    show queen boredleft
+    ta "Ха-ха! У меня рента просрочена уже на три месяца!"
+    show aizawa nervous
+    stop music
+    play sound sound_deadsilence
+    show miharu nervous
+    nar "на несколько секунд все замолчали, Айзава-сенсей заслужила это"
+    play music music_ridiculous fadein 5.0
+    show freya defensive
+    k_unamused "Вы, наверное, шутите..."
+    show reina chide behind miharu at EnterLeft(-0.4, 0.25)
+    r "Как безответственно..."
+    show miharu sad at Bow(1)
+    show reina leer
+    m "Бедная Айзава-сенсей..."
+    show queen chideleft at Bounce(1)
+    show miharu dread
+    q "Дура."
+    show aizawa calm at Laugh(3)
+    show miharu confused
+    show aizawa genki
+    show freya annoyed
+    show reina angry
+    show queen boredleft
+    ta "Ха-ха! Знаю!  Директор мне то же самое сказала, когда выслушала мою историю..."
+    show aizawa happy
+    ta "Поэтому, она разрешила мне пожить здесь некоторое время."
+    show miharu nervous
+    show aizawa megasigh
+    show freya evildream
+    show angrytwitch at Appear(0.47, 0.18, 0.5, 0.5)
+    show reina scowl
+    show queen stareleft
+    ta "*вздох* Если бы она проявила чуть побольше сострадания..."
+    show aizawa pleasantdream at Laugh(2)
+    show reina chastise
+    show queen stareright
+    ta "...и просто отдала бы мне один из своих особняков... Или хотя бы квартиру..."
+    show reina speechless
+    show aizawa sweetdream
+    hide angrytwitch
+    $ renpy.pause(2.0)
+    show freya psycho at Bounce(6)
+    show miharu sigh
+    show aizawa gasp
+    f "{b}У ВАС НЕТ СОВЕСТИ!!!{/b}"
+    show aizawa cry
+    play sound sound_stomachgrowl
+    show freya shock
+    show reina shock
+    show queen stareleft
+    $ renpy.pause(0.75)
+    show miharu uncomfortable at Bounce(1)
+    show freya surprised
+    show queen meditate
+    m "Ох! Это напомнило мне кое-что!"
+    show miharu grief at Bounce(2)
+    show aizawa weep
+    show reina gulp
+    m "Я так и не получила свой обед!"
+    show freya complain at MoveTo(0.35, 0.25)
+    show miharu dread
+    show reina embarrassed
+    f "И КАК ЭТО СВЯЗАНО?!"
+    show reina awkward at Bounce(1)
+    show aizawa whimper
+    show freya bored
+    r "Ах! Забыла!"
+    show miharu sad
+    show aizawa weep
+    show reina nervousblush
+    m "Нюю..."
+    show miharu doubt
+    show aizawa whimper
+    show reina shoo
+    r "Извини, сейчас схожу, возьму!.."
+    show aizawa weep
+    show reina shoofrown at ExitLeft(0.5)
+    show prop foodbubble4 at Appear(0.65, 0.5, 0.5, 0.5)
+    show prop foodbubble4 at Heft(0.55, 20)
+    show freya sigh
+    show queen mumble
+    q "Не забудь мой рис.  И пусть польют соусом!"
+    show aizawa whimper
+    show reina huh at EnterLeft(-0.4, 0.25)
+    hide prop foodbubble4
+    show miharu confused
+    show queen meditate
+    r "Когда ты~?  Угх~! Ох, ладно!"
+    show prop foodbubble5 at Appear(0.5, 0.45, 0.5, 0.5)
+    show prop foodbubble5 at Heft(0.55, 20)
+    show aizawa tearsofjoy at Laugh(2)
+    show miharu uncomfortable
+    show freya perturbed
+    show reina furious
+    ta "И мою курицу тоже, хе-хе!"
+    show prop foodbubble5 at QuickFling(1.5, 0.3, 0.5, 365)
+    show reina reprimand at Bounce(3)
+    show miharu nervous
+    show aizawa moronic
+    show freya perplexed
+    show queen calm
+    r "{b}ЗАМОЛКНИ! САМА ПОКУПАЙ!!!{/b}"
+    show aizawa cry at Bow(1)
+    show miharu smile
+    show freya irked
+    show reina furious
+    ta "Ауу.... *всхлип*"
+    show aizawa whimper
+    show reina impatient at ExitLeft(0.25)
+    show freya mocksideways
+    nar "Рэйна ушла за едой, а я всё гадаю, помнит ли она о моём заказе"
+    show miharu smile at ExitLeft(0.25)
+    show aizawa weep at Sit(0.25)
+    show freya mocksideways at ExitRight(0.25)
+    show queen calm at ExitRight(0.25)
+    $ renpy.pause(0.25)
+    stop music fadeout 3.0
+    scene bg dormroom
+    with dissolve
+    "————— СНОВА В КОМНАТЕ —————"
+    play music music_quirky
+    show miharu genki at Rise(0.0, 1.0)
+    m "Ах~! Я наелась!.."
+    show miharu smile at VChatter
+    k_painful "Ещё бы!"
+    show miharu glad at ExitLeft(0.25)
+    $ renpy.pause(0.25)
+    show prop nasgor at Appear(0.5, 0.5, 0.5, 0.5)
+    with dissolve
+    nar "Рэйна не забыла о моём заказе, и, похоже, он не нанёс мне никакого вреда..."
+    show prop nasgormini
+    with dissolve
+    nar "...но порция была такой маленькой, что уместилась всего в трёх ложках"
+    nar "хорошо хоть до этого я перекусила"
+    hide prop nasgormini
+    with dissolve
+    show bihun1 at Appear(0.2, 0.5, 0.5, 0.5)
+    with quickdissolve
+    show bihun2 at Appear (0.35, 0.5, 0.5, 0.5)
+    with quickdissolve
+    show bihun3 at Appear (0.5, 0.5, 0.5, 0.5)
+    with quickdissolve
+    show bihun4 at Appear (0.65, 0.5, 0.5, 0.5)
+    with quickdissolve
+    show bihun5 at Appear (0.8, 0.5, 0.5, 0.5)
+    with quickdissolve
+    nar "Михару же достались 10 порций..."
+    show miharu chibi3 at Bobble(-0.15, 0.5, 1.15, 0.5, 0.35, 2.5)
+    $ renpy.pause(0.2)
+    hide bihun1
+    with quickdissolve
+    $ renpy.pause(0.2)
+    hide bihun2
+    with quickdissolve
+    $ renpy.pause(0.2)
+    hide bihun3
+    with quickdissolve
+    $ renpy.pause(0.2)
+    hide bihun4
+    with quickdissolve
+    $ renpy.pause(0.2)
+    hide bihun5
+    with quickdissolve
+    nar "...которые она слопала, как ни в чём не бывало!"
+    nar "«Что же за обмен веществ у неё?!»"
+    hide miharu
+    show queen talk at EnterRight(1.0, 0.25)
+    q "Если мне не изменяет память, тебя зовут Хана... Или нет?"
+    show queen calm
+    k_nervous "Ух... Кана..."
+    show queen talk
+    q "Я сожалею, что запоздала с приветствием, но, всё же, мне очень приятно с тобой познакомиться."
+    show queen calm
+    stop music fadeout 2.0
+    menu:   
+        "Просто говорить не задумываясь.":
+            jump nice1_en
+        "Ох, просто подыграть ей.":
+            jump hermajesty_en
+label nice1_en:
+    play music music_queen1
+    k_glad "Ах!"
+    k_genki "Приятно познакомиться, «КОРОЛЕВА»."
+    show queen mumble at Laugh(1)
+    q "Я смотрю, ты правильно произнесла моё имя. Как мило с твоей стороны."
+    jump question_en
+label hermajesty_en:
+    play music music_royalty
+    k_dream "*поклон* Для меня честь познакомиться с вами, Ваше высочество."
+    show queen mumble at Laugh(3)
+    q "Ох-хо-хо! Как забавно!"
+    show queen rebuke
+    q "Даже будь я настоящей королевой, всё равно презирала бы тех, кто называет меня иначе."
+    show queen annoyed
+    k_nervous "Ах... извини..."
+    show queen mumble at Laugh(2)
+    q "Хо-хо! Ничего. Ты новенькая, поэтому я тебя прощаю."
+    show queen comment
+    q "Но только на этот раз..."
+    show queen stare
+    k_gasp "?!! "
+    k_nervous "Хе-хе, эм..."
+    jump question_en
+label question_en:
+    show queen calm
+    k_happy "Можно задать вопрос?"
+    show queen talk
+    q "Конечно."
+    show queen calm
+    k_glad "Эм... «КОРОЛЕВА» — это твоё настоящее имя или..."
+    show queen chide
+    q "Для тебя да."
+    show queen bored
+    nar "не такого ответа я ожидала..."
+    show miharu genki at EnterLeft(0.0, 0.25)
+    show queen stareleft
+    m "Ага! «КОРОЛЕВА» это «КОРОЛЕВА»!"
+    show miharu glad at Laugh(2)
+    m "Не сомневайся в этом, хе-хе!"
+    stop music fadeout 2.0
+    show queen stareright at ExitRight(0.5)
+    show miharu doubt at MoveTo(-0.3, 1.0)
+    nar "пока «КОРОЛЕВА» отвлеклась, Михару отводит меня в угол и шепчет..."
+    show miharu concern
+    m "{=whispered}Лучше не спрашивай, а то будешь проклята куклой...{/=whispered}"
+    show miharu doubt
+    k_ehhh "{=whispered}Что?{/=whispered}"
+    show miharu concern
+    m "{=whispered}Хаку — её любимая кукла...{/=whispered}"
+    show miharu dread
+    m "{=whispered}Это не просто кукла, а кукла-вуду...{/=whispered}"
+    play music music_haku
+    menu:
+        "Да конечно.":
+            jump kidding_en
+        "Ох, нет... Опять сумасшедшие люди...":
+            jump scary_en
+label kidding_en:
+    show ambient haunted behind miharu
+    with slowdissolve
+    show miharu nervous
+    k_sarcastic "{=whispered}Ты, наверное, шутишь...{/=whispered}"
+    show hauntedtwirl behind miharu
+    with dissolve
+    show miharu confused
+    m "{=whispered}Я серьёзно!{/=whispered}"
+    show creepyqueenhaku behind miharu
+    with dissolve
+    show miharu dread
+    m "{=whispered}Его полное имя «SHI NO HAKUSHAKU»!{/=whispered}"
+    m "{=whispered}Это значит «Граф смерти»!{/=whispered}"
+    show miharu nervous
+    k_sneaky "{=whispered}Что~?!!{/=whispered}"
+    jump proof_en
+label scary_en:
+    k_incredulous "УХ! СТРАШНО~!!!"
+    show miharu worried
+    m "{=whispered}Правда?{/=whispered}"
+    jump proof_en
+label proof_en:
+    show miharu dread
+    m "{=whispered}И у Рэйны есть доказательства~{/=whispered}"
+    k_panic "{b}У РЭЙНЫ?!!{/b}"
+    hide ambient haunted
+    hide hauntedtwirl
+    hide creepyqueenhaku
+    show queen hakuchideleft at EnterRight(1.0, 0.5)
+    show miharu nervous
+    q "Ну-ну... О чём это вы, девочки, шепчитесь за моей спиной?"
+    show miharu uncomfortable at MoveTo(0.0, 0.25)
+    show queen hakuboredleft
+    m "Ах, нет, просто~!"
+    show miharu whimper
+    k_nervous "Ха-ха! Ух... да так, ни о чём..."
+    show queen hakuannoyed at Bounce(1)
+    show miharu doubt
+    q "Хмф!"
+    stop music fadeout 1.0
+    play sound sound_doorslam
+    $ renpy.pause(0.5)
+    nar "громко хлопнув дверью, в комнату вошла Рэйна"
+    play music music_reina1 fadein 2.0
+    queue music [ music_reina2, music_reina1 ]
+    show miharu cute
+    nar "впервые за весь вечер я была рада её видеть"
+    show reina relieved behind miharu at EnterLeft(0.5, 0.5)
+    show miharu happy
+    show queen hakucalm
+    r "Ахх~! Наконец-то я дома~!!!"
+    show miharu genki at Laugh(2)
+    show reina tenderblush
+    m "С возвращением~!"
+    show reina coo at MoveTo(0.1, 0.25)
+    show miharu cute
+    r "Михару, дорогая, уже успела по мне соскучиться?!"
+    show queen hakustareleft
+    nar "мало того, что Рэйна приставала к Михару в столовой..."
+    show miharu smile at ExitLeft(0.75)
+    show reina hentai at ExitLeft(0.75)
+    nar "...она и в комнате бросилась её обнимать"
+    show lotsoflove
+    nar " надеюсь, что это не будет продолжаться всю ночь..."
+    show queen hakustare
+    k_nervous "Рэйна слегка... эээ... одержима Михару. Тебе так не кажется?"
+    show queen hakucomment
+    q "Это не моё дело..."
+    q "Но да... Что-то вроде того."
+    show queen hakuboredleft at MoveTo(0.7, 1.0)
+    nar "я хотела спросить ещё кое-что, но она переключила своё внимание на «парочку»"
+    show queen hakuchideleft at Bounce(2)
+    q "Не хочу вам мешать, но... где ты пропадала так долго, Рэй?!"
+    hide lotsoflove
+    show reina complain at EnterLeft(-0.4, 0.25)
+    show queen hakuboredleft
+    r "Посуду мыла, конечно же. Я ведь сегодня дежурная."
+    show reina threaten at Bounce(6)
+    r "*грррр* Между прочим, мне пришлось работать ЗА ДВОИХ, чтобы прикрыть ТЕБЯ!!!"
+    show queen hakucommentleft at Laugh(1)
+    show reina furious
+    q "Понятно. Благодарю. Можете продолжать. Не смею вас больше отвлекать."
+    show reina suspicious at Bounce(3)
+    show queen hakustareleft
+    r "*ворчит*"
+    show miharu sigh at EnterLeft(0.0, 0.5)
+    show reina curious
+    show queen hakucalm
+    m "*зевок*  Уже поздно. Пора спать ложиться."
+    show reina yawn at Bow(1)
+    show miharu tired
+    r "Да, я тоже сегодня порядком утомилась... *зевок*"
+    show queen hakumumble at Bounce(1)
+    show reina tired
+    q "Тогда хватит разговоров. Мы все ложимся спать сейчас же!"
+    show reina sleepy at ExitLeft(0.5)
+    show miharu sigh at ExitLeft(0.5)
+    show queen hakumeditate at ExitRight(0.5)
+    $ renpy.pause(0.5)
+    stop music fadeout 3.0
+    scene black
+    with dissolve
+    nar "не прошло и минуты, как все уже переоделись в пижамы и залезли в кровати"
+    nar "это и меня касается"
+    scene bg dormroom2
+    with dissolve
+    q "Всем приятных снов."
+    m "Спасибо, «КОРОЛЕВА»! Спокойной всем ночи!"
+    r "Спокойной ночи, дорогая Михару!"
+    q "А мне не пожелаешь спокойной ночи?"
+    r "Нет, но могу пожелать плохой, хе-хе."
+    q "Дура."
+    k_genki "Всем спокойной ночи! Было очень приятно познакомиться с вами!"
+    m "Мне тоже было приятно! Увидимся утром!"
+    r "Рано-рано утром! Или мы выкинем тебя из кровати!"
+    q "Возможно."
+    k_nervous "хе-хе... ух, хорошо..."
+    nar "Рэйна и «КОРОЛЕВА» отвернулись и быстро уснули"
+    nar "Михару потянулась, чтобы выключить свет"
+    play sound sound_lightswitch
+    scene bg dormroom3
+    nar "и только в темноте..."
+    nar "...она заметила мерцание экрана нетбука, с которым я сидела в кровати"
+    play music music_calm1 fadein 5.0
+    m "Ох, ты не собираешься ложиться?"
+    k_smile "А? Нет, я тоже скоро лягу. Просто надо ещё кое-что сделать."
+    m "Хорошо... не засиживайся. Доброй ночи..."
+    k_relieved "Доброй..."
+    nar "через несколько секунд я услышала, как Михару тихонько засопела во сне."
+    show prop unr1 at DissolveAppear(0.09, 0.3, 0.0, 0.0, 0.5)
+    show overlay netbook at DissolveAppear(0.03, 0.2, 0.0, 0.0, 0.5)
+    nar "хорошо, что клавиатура и тачпад нетбука почти не издают звуков"
+    show prop unr2
+    with quickdissolve
+    nar "я могу набирать текст и сидеть в интернете, не боясь кого-нибудь разбудить"
+    show prop unr3
+    with quickdissolve
+    nar "я проверяю новости за день... проекты, в которых участвую..."
+    show prop unr5
+    with quickdissolve
+    nar "новые рисунки, игры, музыку..."
+    show prop unr4
+    with quickdissolve
+    nar "...и другие сайты, которые часто посещаю"
+    show prop unr6
+    with quickdissolve
+    stop music fadeout 3.0
+    nar "наконец, я открыла свою почту и ответила на пару сообщений"
+    play music music_netbook1 fadein 5.0
+    scene bg email1
+    with dissolve
+    nar "теперь осталось написать последнее, но очень важное письмо..."
+    nvl clear
+    nvl show dissolve
+    play countermusic sound_typing
+    net "<Дорогая Силлия...>"
+    net "<Сегодня у меня были первые занятия, и... О БОЖЕ!.. клянусь, меня забросило в другое измерение, :D!>"
+    net "<Моя учительница, похоже, сбежала из психушки... =__= >"
+    net "<Я встретилась с уникальными, и, даже можно сказать, странными людьми...>"
+    net "<Чёрт, да я делю комнату с ТРЕМЯ такими :D :D !!!>"
+    net "<Но всё же... Я не теряю надежды.>"
+    net "<Уверена, когда я узнаю их получше, они окажутся хорошими людьми.>"
+    net "<Или я тоже, в конце концов, сойду с ума, ха-ха-ха!.. ^_____^ >"
+    stop music fadeout 3.0
+    net "<Ну, думаю, на сегодня хватит. Потом я тебе о них ещё что-нибудь расскажу.>"
+    net "<Завтра у меня большой день, так что пожелай мне удачи!>"
+    nvl hide nodissolve
+    show ambient darken
+    $ mouse_visible = False 
+    play music music_ED1a fadein 25.0
+    queue music [ music_ED1b, music_silence ]
+    $ floatingtext1 = Text("<Спокойной ночи!>\n\n...\n\n<ХА-ХА! Я забыла. У тебя, наверное, там уже день.>\n<Доброго времени суток, в общем> ^____^\n\n<Всего хорошего.>\nТвоя Кана ^____^v\n\n\nPS:\nИ, как обычно, прости меня за мой плохой английский.> ^^;", slow=True, slow_speed=10, style="emailed")
+    $ renpy.show("mytext1", [Position(xpos=0.1, ypos=0.1, xanchor=0.0, yanchor=0.0)], what=floatingtext1)
+    $ ui.pausebehavior(3.0)
+    $ ui.interact ()
+    $ renpy.pause(17.0)
+    stop countermusic
+    scene white
+    with videofade_in
+    show ED1_1
+    show ED1_2
+    show ED1_3
+    show ED1_4
+    show ED1_5
+    $ renpy.pause(74.75)
+    stop music
+    $ renpy.pause(1.0)
+    show konobangumiwa_1
+    $ renpy.pause(0.25)
+    play music music_konobangumiwa2
+    show konobangumiwa_2
+    $ renpy.pause(10.25)
+    show kanagoodbye
+    stop music
+    $ renpy.pause(3.0)
+    $ mouse_visible = True
+    scene black
+    $ renpy.pause(1.0)
+
+</pre>
+[[Категория:Всяко-разно]]
+[[Категория:Camelia Girls]]
